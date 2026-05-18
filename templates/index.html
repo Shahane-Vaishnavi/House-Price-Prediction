@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DreamVal</title>
+  <link rel="icon" type="image/png" href="{{ url_for('static', filename='HPP_Logo.png') }}">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.5.0/dist/tabler-icons.min.css">
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+  <header>
+    <div class="logo-section">
+      <div class="logo-placeholder">
+        <img src="{{ url_for('static', filename='HPP_Logo.png') }}" 
+          alt="HPP Logo" 
+          class="logo-image">
+      </div>
+      <div>
+        <div class="header-title">DreamVal</div>
+        <div class="header-subtitle">Housing Price Prediction Portal</div>
+      </div>
+    </div>
+    <nav>
+      <a class="active" id="nav-predict" onclick="switchTab('predict'); updateNav('predict');"><i class="ti ti-calculator"></i> Predict</a>
+      <a id="nav-near" onclick="switchTab('near'); updateNav('near');"><i class="ti ti-map-pin"></i> Near Me</a>
+      <a id="nav-insights" onclick="switchTab('insights'); updateNav('insights');"><i class="ti ti-chart-bar"></i> Insights</a>
+    </nav>
+  </header>
+
+  <div class="container">
+    <div class="hero">
+      <h1>Smart Housing Price Prediction & Location Insights Portal</h1>
+      <p>Engineered by <strong>Shahane Vaishnavi</strong> · Delivering intelligent real-estate clarity</p>
+      <div class="search-bar">
+        <input type="text" class="search-input" placeholder="Search by city, locality, or pincode...">
+        <button class="btn btn-secondary" onclick="switchTab('near'); updateNav('near'); getNearMe();">
+          <i class="ti ti-current-location"></i> Detect My Location
+        </button>
+      </div>
+    </div>
+
+    <div class="tabs">
+      <button class="tab active" id="tab-btn-predict" onclick="switchTab('predict'); updateNav('predict');">
+        <i class="ti ti-calculator" aria-hidden="true"></i> Price Predictor
+      </button>
+      <button class="tab" id="tab-btn-near" onclick="switchTab('near'); updateNav('near');">
+        <i class="ti ti-map-pin" aria-hidden="true"></i> Near Me
+      </button>
+      <button class="tab" id="tab-btn-insights" onclick="switchTab('insights'); updateNav('insights');">
+        <i class="ti ti-chart-bar" aria-hidden="true"></i> Market Insights
+      </button>
+    </div>
+
+    <!-- PREDICT TAB -->
+    <div class="section active" id="tab-predict">
+      <div class="card">
+        <p style="font-size:16px;font-weight:600;margin-bottom:16px;color:var(--navy);">Enter property details</p>
+        <div class="grid2" style="margin-bottom:16px;">
+          <div>
+            <label>Division</label>
+            <select id="inp-division" onchange="filterDistricts()">
+              <option value="">Select division</option>
+            </select>
+          </div>
+          <div>
+            <label>District</label>
+            <select id="inp-district" onchange="filterAreas()">
+              <option value="">Select district</option>
+            </select>
+          </div>
+        </div>
+        <div class="grid2" style="margin-bottom:16px;">
+          <div>
+            <label>Area / Locality</label>
+            <select id="inp-area">
+              <option value="">Select area</option>
+            </select>
+          </div>
+          <div>
+            <label>Property type</label>
+            <select id="inp-type">
+              <option value="">Select type</option>
+            </select>
+          </div>
+        </div>
+        <div class="grid2" style="margin-bottom:20px;">
+          <div>
+            <label>Built-up area (sq ft)</label>
+            <input type="number" id="inp-sqft" value="1000" min="100" max="10000" step="50"/>
+          </div>
+          <div>
+            <label>BHK / Rooms</label>
+            <select id="inp-bhk">
+              <option value="1">1 BHK</option>
+              <option value="2" selected>2 BHK</option>
+              <option value="3">3 BHK</option>
+              <option value="4">4 BHK</option>
+              <option value="5">5+ BHK</option>
+            </select>
+          </div>
+        </div>
+        <button class="btn btn-primary" onclick="predictPrice()" style="width:100%;">
+          <i class="ti ti-sparkles"></i> Predict Price
+        </button>
+      </div>
+
+      <div id="pred-result" style="display:none;">
+        <div class="result-box">
+          <p style="font-size:13px;color:#185FA5;margin-bottom:6px;font-weight:600;">PREDICTED PRICE RANGE</p>
+          <p style="font-size:32px;font-weight:600;color:var(--navy);" id="pred-total"></p>
+          <p style="font-size:14px;color:#185FA5;margin-top:6px;" id="pred-psf"></p>
+        </div>
+        <div class="grid3" style="margin-top:16px;">
+          <div class="metric-card"><div class="metric-label">Low estimate</div><div class="metric-val" id="pred-low" style="font-size:18px;"></div></div>
+          <div class="metric-card"><div class="metric-label">Best estimate</div><div class="metric-val" id="pred-mid" style="font-size:18px;color:var(--navy);"></div></div>
+          <div class="metric-card"><div class="metric-label">High estimate</div><div class="metric-val" id="pred-high" style="font-size:18px;"></div></div>
+        </div>
+        <div class="card" style="margin-top:16px;">
+          <p style="font-size:14px;font-weight:600;margin-bottom:12px;color:var(--navy);">Prediction factors</p>
+          <div id="factor-bars"></div>
+          <hr class="divider">
+          <div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap;">
+            <span style="font-size:13px;color:var(--text-secondary);">Growth potential:</span>
+            <span id="growth-badge" class="badge"></span>
+            <span style="font-size:13px;color:var(--text-secondary);margin-left:8px;" id="pred-division"></span>
+          </div>
+        </div>
+      </div>
+      <p id="pred-error" class="err-msg"></p>
+    </div>
+
+    <!-- NEAR ME TAB -->
+    <div class="section" id="tab-near">
+      <div class="split-screen">
+        <div>
+          <div class="card">
+            <p style="font-size:16px;font-weight:600;margin-bottom:8px;color:var(--navy);">Nearby Properties</p>
+            <p style="font-size:13px;color:var(--text-secondary);margin-bottom:16px;">Uses your browser geolocation to find the nearest districts with price data.</p>
+            <div style="display:flex;gap:10px;flex-wrap:wrap;">
+              <button class="btn btn-primary" onclick="getNearMe()">
+                <i class="ti ti-current-location"></i> Use my location
+              </button>
+              <button class="btn btn-secondary" onclick="showAllNear()">
+                <i class="ti ti-list"></i> Browse all districts
+              </button>
+            </div>
+            <p id="near-status" style="font-size:13px;color:var(--text-secondary);margin-top:12px;"></p>
+          </div>
+          <div id="near-results" style="margin-top:16px;"></div>
+        </div>
+        <div class="map-container">
+          <p style="font-size:16px;font-weight:600;margin-bottom:12px;color:var(--navy);">Location Map</p>
+          <div class="map-placeholder">
+            <i class="ti ti-map-2"></i>
+            <p style="font-weight:500;">Map View</p>
+            <p style="font-size:13px;opacity:0.8;">Enable location to see nearby properties on map</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- INSIGHTS TAB -->
+    <div class="section" id="tab-insights">
+      <div class="grid2" style="margin-bottom:16px;">
+        <div class="metric-card"><div class="metric-label">Districts in dataset</div><div class="metric-val" id="ins-districts"></div></div>
+        <div class="metric-card"><div class="metric-label">Avg price / sq ft</div><div class="metric-val" id="ins-avg"></div></div>
+        <div class="metric-card"><div class="metric-label">Highest price area</div><div class="metric-val" id="ins-highest" style="font-size:16px;"></div></div>
+        <div class="metric-card"><div class="metric-label">Lowest price area</div><div class="metric-val" id="ins-lowest" style="font-size:16px;"></div></div>
+      </div>
+      <div class="card">
+        <p style="font-size:15px;font-weight:600;margin-bottom:12px;color:var(--navy);">Price by division (avg ₹/sq ft)</p>
+        <div class="scatter-wrap"><canvas id="divisionChart" role="img" aria-label="Bar chart showing average price per sq ft by division"></canvas></div>
+      </div>
+      <div class="card" style="margin-top:16px;">
+        <p style="font-size:15px;font-weight:600;margin-bottom:12px;color:var(--navy);">Top 10 highest-price areas</p>
+        <div id="top10"></div>
+      </div>
+    </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+  
+  <script>
+  function getNearMe() { 
+    const status = document.getElementById("near-status"); 
+    status.innerText = "Detecting your location... Please wait."; 
+ 
+    // Step 1: Ask for location 
+    if (navigator.geolocation) { 
+      navigator.geolocation.getCurrentPosition(showNearResults, showNearError); 
+    } else { 
+      status.innerText = "Your browser does not support location access."; 
+    } 
+  } 
+ 
+  // Step 2: If location received 
+  function showNearResults(position) { 
+    const lat = position.coords.latitude; 
+    const lon = position.coords.longitude; 
+ 
+    document.getElementById("near-status").innerText = 
+      "Location found! Searching nearby districts..."; 
+ 
+    // Example: send to backend 
+    fetch(`/near-me?lat=${lat}&lon=${lon}`) 
+      .then(response => response.json()) 
+      .then(data => { 
+        document.getElementById("near-results").innerHTML = ` 
+          <div class="card"> 
+            <p><strong>Your Location:</strong> ${data.address}</p> 
+            <p><strong>Nearby District:</strong> ${data.nearby_district}</p> 
+            <p><strong>Average Price:</strong> ₹${data.avg_price.toLocaleString('en-IN')}</p> 
+          </div> 
+        `; 
+      }) 
+      .catch(() => { 
+        document.getElementById("near-status").innerText = 
+          "Unable to load results. Try again!"; 
+      }); 
+  } 
+ 
+  // Step 3: If location blocked 
+  function showNearError(error) { 
+    if (error.code === error.PERMISSION_DENIED) { 
+      document.getElementById("near-status").innerText = 
+        "Please allow location access!"; 
+    } else { 
+      document.getElementById("near-status").innerText = 
+        "Unable to get your location."; 
+    } 
+  } 
+ 
+  // Step 4: Button to view all districts 
+  function showAllNear() { 
+    document.getElementById("near-results").innerHTML = ` 
+      <div class="card"> 
+        <p>Showing all districts...</p> 
+      </div> 
+    `; 
+  } 
+  </script>
+</body>
+</html>

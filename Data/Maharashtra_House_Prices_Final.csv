@@ -1,0 +1,47 @@
+Division,District Name,Headquarter City,Area_Name,Type,Price_Per_SqFt,Price_Range_Low,Price_Range_High,Growth_Potential,No. of Talukas,Approx. No. of Villages
+Konkan,Mumbai City,Mumbai,General District Area,Residential,8224.923077,6991.184615,9458.661538,Moderate,0,0
+Konkan,Mumbai Suburban,Bandra,General District Area,Residential,8224.923077,6991.184615,9458.661538,Moderate,3,0
+Konkan,Thane,Thane,General District Area,Residential,8224.923077,6991.184615,9458.661538,Moderate,7,821
+Konkan,Palghar,Palghar,General District Area,Residential,8224.923077,6991.184615,9458.661538,Moderate,8,1008
+Konkan,Raigad,Alibaug,General District Area,Residential,8224.923077,6991.184615,9458.661538,Moderate,15,1919
+Konkan,Ratnagiri,Ratnagiri,General District Area,Residential,8224.923077,6991.184615,9458.661538,Moderate,9,1531
+Konkan,Sindhudurg,Oros,General District Area,Residential,8224.923077,6991.184615,9458.661538,Moderate,8,743
+Pune,Pune,Pune,Koregaon Park,Elite Residential,18400,14550,23550,Moderate,14,1877
+Pune,Pune,Pune,Viman Nagar,Residential/IT Hub,12712,10500,21000,High,14,1877
+Pune,Pune,Pune,Kalyani Nagar,Elite Residential,15250,14500,16000,High,14,1877
+Pune,Pune,Pune,Kothrud,Residential/Cultural,12500,11500,13500,Stable,14,1877
+Pune,Pune,Pune,FC Road,Commercial/Student,15000,14000,18000,High,14,1877
+Pune,Satara,Satara,General District Area,Residential,14772.4,12556.54,16988.26,Moderate,11,1739
+Pune,Sangli,Sangli,General District Area,Residential,14772.4,12556.54,16988.26,Moderate,10,730
+Pune,Kolhapur,Kolhapur,General District Area,Residential,14772.4,12556.54,16988.26,Moderate,12,1201
+Pune,Solapur,Solapur,General District Area,Residential,14772.4,12556.54,16988.26,Moderate,11,1144
+Nashik,Nashik,Nashik,General District Area,Residential,8224.923077,6991.184615,9458.661538,Moderate,15,1931
+Nashik,Dhule,Dhule,General District Area,Residential,8224.923077,6991.184615,9458.661538,Moderate,4,681
+Nashik,Nandurbar,Nandurbar,General District Area,Residential,8224.923077,6991.184615,9458.661538,Moderate,6,943
+Nashik,Jalgaon,Jalgaon,General District Area,Residential,8224.923077,6991.184615,9458.661538,Moderate,15,1513
+Nashik,Ahilyanagar (Ahmednagar),Ahilyanagar,General District Area,Residential,8224.923077,6991.184615,9458.661538,Moderate,14,1581
+Sambhajinagar,Chhatrapati Sambhajinagar,Sambhajinagar,General District Area,Residential,4132.75,3512.8375,4752.6625,Moderate,9,1344
+Sambhajinagar,Jalna,Jalna,General District Area,Residential,4132.75,3512.8375,4752.6625,Moderate,8,971
+Sambhajinagar,Parbhani,Parbhani,General District Area,Residential,4132.75,3512.8375,4752.6625,Moderate,9,848
+Sambhajinagar,Hingoli,Hingoli,General District Area,Residential,4132.75,3512.8375,4752.6625,Moderate,5,711
+Sambhajinagar,Nanded,Nanded,General District Area,Residential,4132.75,3512.8375,4752.6625,Moderate,16,1603
+Sambhajinagar,Dharashiv (Osmanabad),Dharashiv,General District Area,Residential,4132.75,3512.8375,4752.6625,Moderate,8,737
+Sambhajinagar,Latur,Latur,Ausa Road,Modern Residential,5650,5400,5900,Very High,10,945
+Sambhajinagar,Latur,Latur,Latur MIDC,Industrial/Residential,5747,4500,8500,Moderate,10,945
+Sambhajinagar,Latur,Latur,Ganj Golai,Commercial/Market,3125,2250,4000,Stable,10,945
+Sambhajinagar,Latur,Latur,Narayan Nagar,Elite Residential,7297,6500,8000,High,10,945
+Sambhajinagar,Beed,Beed,Ambajogai,Pilgrimage/Education,2193,1800,4000,Moderate,11,1403
+Sambhajinagar,Beed,Beed,Kankaleshwar,Historical/Residential,3000,2500,3500,Stable,11,1403
+Sambhajinagar,Beed,Beed,Parli Vaijnath,Religious/Industrial,2300,1800,2800,High,11,1403
+Sambhajinagar,Beed,Beed,Shivaji Chowk,Commercial,3750,3000,4500,High,11,1403
+Amravati,Amravati,Amravati,General District Area,Residential,8224.923077,6991.184615,9458.661538,Moderate,14,1980
+Amravati,Akola,Akola,General District Area,Residential,8224.923077,6991.184615,9458.661538,Moderate,7,1009
+Amravati,Washim,Washim,General District Area,Residential,8224.923077,6991.184615,9458.661538,Moderate,6,793
+Amravati,Buldhana,Buldhana,General District Area,Residential,8224.923077,6991.184615,9458.661538,Moderate,13,1424
+Amravati,Yavatmal,Yavatmal,General District Area,Residential,8224.923077,6991.184615,9458.661538,Moderate,16,2131
+Nagpur,Nagpur,Nagpur,General District Area,Residential,8224.923077,6991.184615,9458.661538,Moderate,14,1874
+Nagpur,Wardha,Wardha,General District Area,Residential,8224.923077,6991.184615,9458.661538,Moderate,8,1361
+Nagpur,Bhandara,Bhandara,General District Area,Residential,8224.923077,6991.184615,9458.661538,Moderate,7,820
+Nagpur,Gondia,Gondia,General District Area,Residential,8224.923077,6991.184615,9458.661538,Moderate,8,945
+Nagpur,Chandrapur,Chandrapur,General District Area,Residential,8224.923077,6991.184615,9458.661538,Moderate,15,1791
+Nagpur,Gadchiroli,Gadchiroli,General District Area,Residential,8224.923077,6991.184615,9458.661538,Moderate,12,1676
