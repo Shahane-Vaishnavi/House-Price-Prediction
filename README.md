@@ -1,82 +1,89 @@
-# National Housing Price Prediction & Geospatial Analysis Portal
+# House Price Prediction — Maharashtra Local Dataset
 
-A web application for predicting house prices in Maharashtra, India, with geospatial features.
+Created by **Vaishnavi Shahane**
 
-## Project Structure
+## 📌 Project Overview
+This project focuses on building a **House Price Prediction (HPP)** model using a **self-created, research-based local Maharashtra housing dataset**. Unlike commonly available generic datasets, this dataset captures **regional pricing patterns, locality characteristics, and real-world attributes** unique to Maharashtra.
+
+The goal is to provide a **more accurate, location-aware price prediction model** for houses across different cities and towns of Maharashtra.
+
+## 🏡 Dataset Description
+The dataset used in this project was **fully created, researched, and compiled by me — Vaishnavi Shahane**. All data points are based on **local Maharashtra housing trends**, collected and structured manually to ensure accuracy and regional relevance.
+
+### Features Included
+- City / Location (Pune, Mumbai, Nashik, Nagpur, Aurangabad, etc.)
+- Area (sq ft)
+- BHK / Rooms
+- Property Type (Flat, Row House, Bunglow, etc.)
+- Construction Status (New / Resale)
+- Distance to Key Facilities
+- Local Market Rate Range
+- Price (Target Variable)
+
+### Why a Custom Dataset?
+- Public datasets don't reflect **Maharashtra's unique price variations**.
+- Local factors like **neighbourhood demand, urban growth, connectivity, and city-specific value zones** strongly influence prices.
+- Creating this dataset helps in building a **regionally realistic ML model**.
+
+## 📊 Machine Learning Workflow
+
+### 1. Data Pre-Processing
+- Handle missing values
+- Categorical encoding
+- Outlier removal for high-range city data (like Mumbai)
+- Feature scaling
+
+### 2. Model Building
+Models tested:
+- Linear Regression
+- Random Forest Regressor
+- Gradient Boosting
+- XGBoost
+
+### 3. Model Evaluation
+Metrics used:
+- R² Score
+- MAE
+- RMSE
+
+Final model chosen based on best performance for **non-linear price variations**.
+
+## 🚀 Features of This Project
+- Maharashtra-specific custom dataset
+- Clean and reproducible ML pipeline
+- Clear preprocessing and feature engineering steps
+- Model comparison and final model selection
+- Predictive function to estimate house prices
+
+## 📂 Project Structure
 ```
-ML_Project/
-├── Data/
-│   └── Maharashtra_House_Prices_Final.csv  # Dataset with house prices
-├── static/
-│   ├── styles.css               # Styles for the web interface
-│   ├── script.js               # JavaScript for interactivity
-│   └── HPP_Logo.png          # Logo for the application
-├── templates/
-│   └── index.html             # Flask template
-├── index.html                 # Main HTML file (standalone)
-├── app.py                   # Flask backend with ML model
-├── requirements.txt          # List of Python dependencies
-└── README.md                 # This file!
+HPP/
+├── data/
+│   └── maharashtra_housing_data.csv
+├── notebooks/
+│   └── HPP_Model_Training.ipynb
+├── src/
+│   ├── preprocessing.py
+│   ├── model.py
+│   └── predict.py
+├── README.md
+└── requirements.txt
 ```
 
-## JavaScript Functions (script.js)
-| Function Name            | What it Does
-|-------------------------|--------------------------------
-| `fmt(n)`               | Formats a number as Indian Rupees (₹) with commas
-| `fmtCr(n)`             | Formats price in Lakh (L) or Crore (Cr) for readability
-| `filterDistricts()`       | Filters districts based on selected division in price predictor
-| `filterAreas()`         | Filters areas based on selected district
-| `predictPrice()`        | Predicts property price using selected inputs and shows results
-| `haversine(lat1,lng1,lat2,lng2) | Calculates distance (km between two coordinate points
-| `renderNearResults(districts) | Renders a list of nearby properties
-| `getNearMe()`           | Uses browser geolocation to find nearby districts
-| `showAllNear()`         | Shows all districts sorted by price
-| `updateNav(tabName)`     | Highlights active tab in header navigation
-| `switchTab(name)`          | Switches between 4 main sections (Predict, Near Me, Insights, Model)
-| `buildInsights()`        | Builds the market insights tab with charts & statistics
+## 📦 Installation
+```bash
+git clone <your-repo-link>
+cd fodername
+pip install -r requirements.txt
+```
 
-## Python Backend Functions (app.py)
-| Function Name          | What it Does
-|-----------------------|--------------------------------
-| `haversine(lat1,lng1,lat2,lng2)` | Haversine formula for distance calculation
-| `index()`             | Renders main page for Flask
-| `predict()`          | API endpoint for price prediction (POST /api/predict)
-| `nearby()`            | API endpoint for nearby properties (POST /api/nearby)
-| `get_data()`          | API endpoint to get all data (GET /api/data)
+## 🛡️ Dataset Ownership
+This dataset is **100% original and created exclusively by Vaishnavi Shahane**.  
+It is not taken from any public source or scraped from existing datasets.  
+All entries are manually collected, researched, verified, and structured based on **real Maharashtra housing insights**.
 
-## Manual Steps to Run the Project
----
+Usage of this dataset in other projects should include proper credit to the creator.
 
-### 1. Run without Flask (Standalone HTML)
-1. Open your terminal, navigate to the ML_Project folder.
-2. Run this command to start a simple HTTP server:
-   ```bash
-   python -m http.server 8000
-   ```
-3. Then open your browser and go to: `http://localhost:8000`
+## 🙌 Acknowledgement
+This project is fully created and researched by **Vaishnavi Shahane**, using ground-level Maharashtra housing insights.
 
-### 2. Run with Flask (With Backend)
-1. Make sure you have Python installed.
-2. Install all dependencies:
-   ```bash
-   pip install -r requirements.txt
-   ```
-3. Run the Flask application:
-   ```bash
-   python app.py
-   ```
-4. Now, open your browser and go to: `http://127.0.0.1:5000`
-
----
-
-## Features
-- Price prediction for properties based on district, area, type, BHK, and area in sqft
-- Nearby properties using browser geolocation
-- Market insights with charts
-- Random Forest machine learning model
-- Clean, professional UI with Navy Blue and Sky Blue color scheme
-
-## Machine Learning Model
-- Algorithm: `RandomForestRegressor` from `scikit-learn`
-- Used because it handles non-linear relationships well, is robust to noisy data, and performs strongly for regression tasks with mixed categorical features after one-hot encoding.
-- The model is trained on `Price_Per_SqFt` using location and property-type features so predictions capture variation across districts, areas, and housing types.
