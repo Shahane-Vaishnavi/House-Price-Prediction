@@ -3,9 +3,9 @@
 Created by **Vaishnavi Shahane**
 
 ## 📌 Project Overview
-This project focuses on building a **House Price Prediction (HPP)** model using a **self-created, research-based local Maharashtra housing dataset**. Unlike commonly available generic datasets, this dataset captures **regional pricing patterns, locality characteristics, and real-world attributes** unique to Maharashtra.
+This project focuses on building a House Price Prediction (HPP) model using a self-created, research-based local Maharashtra housing dataset, specifically centered around the Ambajogai region. Unlike generic public datasets, this dataset captures regional pricing patterns, locality characteristics, and real-world attributes unique to Maharashtra.
 
-The goal is to provide a **more accurate, location-aware price prediction model** for houses across different cities and towns of Maharashtra.
+The goal is to provide a **more accurate, location-aware price prediction model** for houses across Ambajogai and other cities of Maharashtra..
 
 ## 🏡 Dataset Description
 The dataset used in this project was **fully created, researched, and compiled by me — Vaishnavi Shahane**. All data points are based on **local Maharashtra housing trends**, collected and structured manually to ensure accuracy and regional relevance.
@@ -35,14 +35,6 @@ The dataset used in this project was **fully created, researched, and compiled b
 
 ### 2. Model Building
 The repository implements a production model using **RandomForestRegressor** from Scikit-Learn with categorical encoding for geographic and property features.
-
-### 3. Model Evaluation
-Metrics used:
-- R² Score
-- MAE
-- RMSE
-
-Final model chosen based on best performance for **non-linear price variations**.
 
 ## 📈 Model Performance
 The machine learning model was trained using **RandomForestRegressor** from Scikit-Learn and evaluated using regression metrics.
