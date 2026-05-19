@@ -18,7 +18,7 @@ data_path = os.path.join(os.path.dirname(__file__), 'Data', 'Maharashtra_House_P
 df = pd.read_csv(data_path)
 
 # Preprocess data
-X = df[['Division', 'District Name', 'Area_Name', 'Type', 'Price_Per_SqFt']]
+X = df[['Division', 'District Name', 'Area_Name', 'Type']]
 y = df['Price_Per_SqFt']
 
 # Create preprocessor
