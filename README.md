@@ -34,9 +34,7 @@ The dataset used in this project was **fully created, researched, and compiled b
 - Feature scaling
 
 ### 2. Model Building
-Models tested:
-- Random Forest Regressor
-
+The repository implements a production model using **RandomForestRegressor** from Scikit-Learn with categorical encoding for geographic and property features.
 
 ### 3. Model Evaluation
 Metrics used:
@@ -45,6 +43,32 @@ Metrics used:
 - RMSE
 
 Final model chosen based on best performance for **non-linear price variations**.
+
+## 📈 Model Performance
+The machine learning model was trained using **RandomForestRegressor** from Scikit-Learn and evaluated using regression metrics.
+
+### Evaluation Metrics
+
+| Metric | Value |
+|--------|--------|
+| MAE (Mean Absolute Error) | 253.09 |
+| RMSE (Root Mean Squared Error) | 699.80 |
+| R² Score | 0.9488 |
+
+### Interpretation
+
+- The model achieved an **R² Score of 94.88%**, indicating excellent prediction capability.
+- Low MAE and RMSE values show that the model predictions are close to actual house prices.
+- The model was evaluated using a proper **train-test split** to ensure realistic performance measurement.
+
+### Technologies Used
+
+- Python
+- Flask
+- Scikit-Learn
+- Pandas
+- NumPy
+- RandomForestRegressor
 
 ## 🚀 Features of This Project
 - Maharashtra-specific custom dataset
