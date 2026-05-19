@@ -11,7 +11,7 @@ The goal is to provide a **more accurate, location-aware price prediction model*
 The dataset used in this project was **fully created, researched, and compiled by me — Vaishnavi Shahane**. All data points are based on **local Maharashtra housing trends**, collected and structured manually to ensure accuracy and regional relevance.
 
 ### Features Included
-- City / Location (Pune, Mumbai, Nashik, Nagpur, Aurangabad, etc.)
+- City / Location (Pune, Mumbai, Nashik, Nagpur, Sambhaji Nagar,Ambajogai etc.)
 - Area (sq ft)
 - BHK / Rooms
 - Property Type (Flat, Row House, Bunglow, etc.)
@@ -35,10 +35,8 @@ The dataset used in this project was **fully created, researched, and compiled b
 
 ### 2. Model Building
 Models tested:
-- Linear Regression
 - Random Forest Regressor
-- Gradient Boosting
-- XGBoost
+
 
 ### 3. Model Evaluation
 Metrics used:
